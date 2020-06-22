@@ -35,7 +35,7 @@ public class MainController {
 
     @GetMapping("/join")
     public ModelAndView join() {
-        ModelAndView modelAndView = new ModelAndView("createUser/create");
+        ModelAndView modelAndView = new ModelAndView("createUser/join");
         return modelAndView;
     }
 
@@ -46,10 +46,9 @@ public class MainController {
         return "hi";
     }
 
-
     @GetMapping("/login")
     public ModelAndView login() {
-        ModelAndView modelAndView = new ModelAndView("loginUser/login");
+        ModelAndView modelAndView = new ModelAndView("/login");
         return modelAndView;
     }
 
@@ -68,5 +67,18 @@ public class MainController {
                 return new ResponseEntity("비밀번호 불일치", HttpStatus.CONFLICT);
             }
         }
+    }
+
+    @PostMapping("/duplicate")
+    public ResponseEntity findId(@RequestBody HashMap<String, String> idVal) {
+        String val = idVal.get("userId");
+        System.out.println(val);
+
+        Users man = usersServiceInterface.checkUsers(val);
+
+        if(man == null)
+            return new ResponseEntity("유저정보 없음", HttpStatus.OK);
+        else
+            return new ResponseEntity("유저정보 있음", HttpStatus.OK);
     }
 }

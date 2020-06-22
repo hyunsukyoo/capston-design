@@ -10,7 +10,6 @@ public class Users {
     private String userId;
     private String userPw;
     private String userName;
-    private String userGender;
     private String userTel;
     private String userAddress;
 
@@ -46,13 +45,6 @@ public class Users {
         this.userName = userName;
     }
 
-    public String getUserGender() {
-        return userGender;
-    }
-
-    public void setUserGender(String userGender) {
-        this.userGender = userGender;
-    }
 
     public String getUserTel() {
         return userTel;

@@ -1,121 +1,169 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-  <title>Scrolling Nav - Start Bootstrap Template</title>
+<html>
+	<head>
+		<title>Epilogue by TEMPLATED</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="resources/css/main.css" />
+		<link rel="stylesheet" href="style.css" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
+		
+			<style>
+			body{
+				background-size: 100% 100%;
+				color: black;
+				text-align: center;
+				font-family: HS��������ü, serif;
+			}
+			
+			a:link {
+				color: black;
+				text-decoration: none;
+			}
+			
+			a:visited {
+				color: black;
+				text-decoration: none;
+			}
+			
+			#login_form {
+				font-color: black;
+				opacity: 0.8;
+				border-radius: 10px;
+				width: 400px;
+				padding: 10px;
+				height: 80px;
+				text-align: center;
+				position:center;
+				
+			}
+			
+			#login {
+			
+				opacity: 1.0;
+				color: black;
+				bottom: 10px;
+				left: 50px;
+			}
+			
+			#find {
+			
+				opacity: 1.0;
+				color: black;
+				bottom: 10px;
+				right: 50px;
+			}
+			
+	</style>
+	</head>
+	
+	<body>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script>
+		const login = () => {
+			let userId = $('input[name=userId]').val();
+			let userPw = $('input[name=userPw]').val();
 
-  <!-- Bootstrap core CSS -->
-  <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+			let values = {
+				'userId': userId,
+				'userPw': userPw
+			};
 
-  <!-- Custom styles for this template -->
-  <link href="resources/css/scrolling-nav.css" rel="stylesheet">
+			console.log(values);
 
-</head>
+			axios.post('http://localhost:8080/login', values)
+					.then(res => {
+						console.log(res);
+						alert('로그인 성공!');
+					})
+					.catch(err => {
+						console.log(err);
+						alert('로그인 실패!');
+					});
+		}
+	</script>
+		<!-- Header -->
+			<header id="header" class="alt">
+				<div class="inner">
+					<h1>Corona Out</h1>
+						<p>COVID-19 ������ ����/���� ����� ���� ����</p>
+				</div>
+			</header>
 
-<body id="page-top">
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-  <div class="container">
-    <a class="navbar-brand js-scroll-trigger" href="#page-top">코로나 병원예약 시스템</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="/join">회원가입</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#services">병원정보</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#contact">예약하기</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="/login">로그인</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+				<!-- Banner -->
+					<section id="intro" class="main">
+						<span class="icon fa-diamond major"></span>
+						<h2>Login</h2>
+						<center>
+						<div id="login_form" class="main">
+						<form>
+							<table>
+								<tr>
+									<td>ID :</td>
+									<td><input type="text" name="userId"></td>
+								</tr>
+								<tr>
+									<td>PASSWORD :</td>
+									<td><input type="password" name="userPw"></td>
+								</tr>
+								<tr>
+									<td><input type="button" value="login" onclick="login()"></td>
+									<td><input type="button" value="join" onclick="location.href='/join'"></td>
+								</tr>
+							</table>
+				
+						</form>
+					</div>
+					</center>
+					</section>
 
-<header class="bg-primary text-white">
-  <div class="container text-center">
-    <h1></h1>
-    <p class="lead">코로나 병원 예약 사이트입니다.</p>
-  </div>
-</header>
+				
 
-<section id="about">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <h2>코로나가 의심된다면?</h2>
-        <p class="lead">이 페이지는 코로나 의심 환자라면 근처에 있는 병원을 예약해주어 빠른 대처를 위한 사이트입니다.</p>
-        <ul>
-          <li>Clickable nav links that smooth scroll to page sections</li>
-          <li>Responsive behavior when clicking nav links perfect for a one page website</li>
-          <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the
-            navbar
-          </li>
-          <li>Minimal custom CSS so you are free to explore your own unique design options</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+				<!-- CTA -->
+					<section id="cta" class="main special">
+						<h2>Capstone Project</h2>
+						<P>Team   :   Lee Chang Myeong   /   Yoo Hyun Suk   /   Yun I Jin</p>
+						<ul class="actions">
+							<li><a href="#" class="button big">Move Up</a></li>
+						</ul>
+					</section>
 
-<section id="services" class="bg-light">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <h2>Services we offer</h2>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore,
-          expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda
-          laborum vel, labore ut velit dignissimos.</p>
-      </div>
-    </div>
-  </div>
-</section>
+				<!-- Main -->
+				<!--
+					<section id="main" class="main">
+						<header>
+							<h2>Lorem ipsum dolor</h2>
+						</header>
+						<p>Fusce malesuada efficitur venenatis. Pellentesque tempor leo sed massa hendrerit hendrerit. In sed feugiat est, eu congue elit. Ut porta magna vel felis sodales vulputate. Donec faucibus dapibus lacus non ornare. Etiam eget neque id metus gravida tristique ac quis erat. Aenean quis aliquet sem. Ut ut elementum sem. Suspendisse eleifend ut est non dapibus. Nulla porta, neque quis pretium sagittis, tortor lacus elementum metus, in imperdiet ante lorem vitae ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eget neque id metus gravida tristique ac quis erat. Aenean quis aliquet sem. Ut ut elementum sem. Suspendisse eleifend ut est non dapibus. Nulla porta, neque quis pretium sagittis, tortor lacus elementum metus, in imperdiet ante lorem vitae ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+					</section>
+				-->
 
-<section id="contact">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <h2>Contact us</h2>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem
-          dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa
-          exercitationem, in, quo totam.</p>
-      </div>
-    </div>
-  </div>
-</section>
+				<!-- Footer -->
+					<footer id="footer">
+						<ul class="icons">
+							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+						<p class="copyright">&copy; �� 2-14</p>
+					</footer>
 
-<!-- Footer -->
-<footer class="py-5 bg-dark">
-  <div class="container">
-    <p class="m-0 text-center text-white">Copyright &copy; BinarySearch</p>
-  </div>
-  <!-- /.container -->
-</footer>
+			</div>
 
-<!-- Bootstrap core JavaScript -->
-<script src="../../../../../../startbootstrap-scrolling-nav-gh-pages/vendor/jquery/jquery.min.js"></script>
-<script src="../../../../../../startbootstrap-scrolling-nav-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<!-- Scripts -->
+			<script src="../js/jquery.min.js"></script>
+			<script src="../js/skel.min.js"></script>
+			<script src="../js/util.js"></script>
+			<script src="../js/main.js"></script>
 
-<!-- Plugin JavaScript -->
-<script src="../../../../../../startbootstrap-scrolling-nav-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom JavaScript for this theme -->
-<script src="../js/scrolling-nav.js"></script>
-
-</body>
-
+	</body>
 </html>

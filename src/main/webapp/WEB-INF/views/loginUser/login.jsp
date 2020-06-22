@@ -45,7 +45,7 @@
         <tr>
             <td colspan="2" align="center">
                 <input type="button" value="로그인" onclick="login()">
-                <input type="button" value="회원가입" onclick="location.href='/join'">
+                <input type="button" value="회원가입" onclick="location.href='/create'">
             </td>
         </tr>
     </table>
